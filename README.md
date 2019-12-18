@@ -13,18 +13,18 @@ Un client t'a contacté pour te demander de réaliser un jeu de questions/répon
 
 En observant le diagramme, réponds aux questions suivantes. Tu dois créer un fichier **quiz.md** dans ton dépôt, et écrire les réponses à chaque question en _Markdown_ dedans.
 
-- Combien de colonnes aura la table **question** en base de données? Donne le nom de chacune de ces colonnes.
-- Quelle fonctionnalité de l'application est décrite par la relation **Quiz** _written by_ **User**? Essaie d'exprimer cette fonctionnalité sous la forme d'une _user story_ ("en tant que ..., j'ai besoin de ... afin de ...").
-- La relation **Quiz** _written by_ **User** a un losange blanc, alors que la relation **Question** _belongs to_ **Quiz** a un losange noir. Peux-tu expliquer la différence entre ces deux relations?
-- Combien de question peut-il y avoir dans un questionnaire (minimum et maximum)?
-- Combien de réponses chaque question peut-elle avoir (minimum et maximum)?
-- Que se passe-t-il si je supprime une question?
-- Que se passe-t-il si je supprime un utilisateur?
-- Comment pourrons-nous coder la relation **Tag** _describes_ **Quiz** dans notre base de données?
-- Combien de clés étrangères la table **Quiz** possède-t-elle? Nomme chacune de ces clés.
-- Pourquoi y a-t-il deux relations entre **Answer** et **Question**?
-- Peux-tu expliquer pourquoi la classe **QuizResult** se trouve entre les classes **User** et **Quiz**?
-- Si un utilisateur souhaite tenter à nouveau un questionnaire, est-il prévu qu'il puisse voir à quelles questions il avait bien répondu précédemment? Si oui, où peut-on le voir sur le diagramme? Si non, que faudrait-il rajouter sur le diagramme pour pouvoir l'exprimer?
+1. Combien de colonnes aura la table **question** en base de données? Donne le nom de chacune de ces colonnes.
+2. Quelle fonctionnalité de l'application est décrite par la relation **Quiz** _written by_ **User**? Essaie d'exprimer cette fonctionnalité sous la forme d'une _user story_ ("en tant que ..., j'ai besoin de ... afin de ...").
+3. La relation **Quiz** _written by_ **User** a un losange blanc, alors que la relation **Question** _belongs to_ **Quiz** a un losange noir. Peux-tu expliquer la différence entre ces deux relations?
+4. Combien de question peut-il y avoir dans un questionnaire (minimum et maximum)?
+5. Combien de réponses chaque question peut-elle avoir (minimum et maximum)?
+6. Que se passe-t-il si je supprime une question?
+7. Que se passe-t-il si je supprime un utilisateur?
+8. Comment pourrons-nous coder la relation **Tag** _describes_ **Quiz** dans notre base de données?
+9. Combien de clés étrangères la table **Quiz** possède-t-elle? Nomme chacune de ces clés.
+10. Pourquoi y a-t-il deux relations entre **Answer** et **Question**?
+11. Peux-tu expliquer pourquoi la classe **QuizResult** se trouve entre les classes **User** et **Quiz**?
+12. Si un utilisateur souhaite tenter à nouveau un questionnaire, est-il prévu qu'il puisse voir à quelles questions il avait bien répondu précédemment? Si oui, où peut-on le voir sur le diagramme? Si non, que faudrait-il rajouter sur le diagramme pour pouvoir l'exprimer?
 
 ## Deuxième partie: création de base de données
 
