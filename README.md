@@ -37,3 +37,67 @@ Réalise à l'aide de PHPMyAdmin une base de données **exercice_quiz** qui corr
 Lorsque tu as terminé, utilise la fonction **Export** de PHPMyAdmin, ajoute le fichier .sql ainsi obtenu dans ton dépôt et fais un _commit_. Si tu souhaites compléter ta base de données plus tard, n'oublie pas que tu peux toujours refaire un export et un _commit_ du nouveau fichier!
 
 ## Troisième partie: exploitation d'une base de données en Java
+
+Dans cette partie, nous allons travailler sur la base de données **shop**, à partir du fichier **shop.sql** fourni. Commence par importer ce fichier dans PHPMyAdmin. N'oublie pas de télécharger le driver de MariaDB pour Java à cette adresse: https://downloads.mariadb.com/Connectors/java/connector-java-2.5.2/mariadb-java-client-2.5.2.jar, et de le ranger dans un dossier **lib**.
+
+### 1. Quelques requêtes SQL pour se mettre en jambe
+
+A l'aide de la classe DBManager fournie, écris les requêtes SQL qui permettent de répondre à ces questions:
+
+- Quelles sont les marques enregistrées dans notre base de données?
+- Combien y a-t-il de produits de la marque Nokia?
+- Geneviève a-t-elle déjà passé une commande?
+- Quelle est l'adresse de livraison de Stéphanie?
+- Quelles est la commande passée la plus récemment?
+- Combien d'articles y a-t-il dans la commande passée par Jean-Pierre?
+- Quel article a commandé Michel dans sa dernière commande?
+
+### 2. Un modèle pour nos commandes
+
+Nous avons besoin d'une classe **Order** pour gérer nos commandes en Java. Crée un fichier **Order.java** pour cela.
+
+Pour commencer, définis ses propriétés en t'inspirant des colonnes de la table **_order**.
+
+### 3. Initialisons nos commandes
+
+Maintenant, crée un constructeur qui va permettre d'intialiser ces propriétés.
+
+### 4. Instancions une commande à partir de la base de données
+
+Nous allons maintenant créer une méthode qui va nous permettre d'aller chercher un enregistrement de la table **_order** et d'en faire un objet de classe **Order**.
+
+Dans la classe **Order**, crée une méthode **find** répondant aux spécifications suivantes:
+
+- Elle doit être **statique** et **publique**.
+- **ENTREE**: un nombre entier représentant l'_id_ de l'enregistrement désiré.
+- **SORTIE**: une instance de **Order**, initialisée avec les propriétés lues en base de données.
+
+### 5. Allons chercher le client qui a passé la commande
+
+Crée une classe **User** avec un constructeur permettant d'initialiser ses propriétés. Puis, dans la classe **Order**, crée une méthode **getUser** répondant aux spécifications suivantes:
+
+- **ENTREE**: aucune.
+- **SORTIE**: une instance de **User**, initialisée avec les propriétés de l'utilisateur référencé par la colonne **user_id** de notre commande.
+
+#### Bonus
+
+Faire la même chose avec l'adresse de livraison de la commande.
+
+### 6. Allons chercher les articles de la commande
+
+Créer une classe **Product** avec un constructeur permettant d'initialiser ses propriétés. Puis, dans la classe **Order**, crée une méthode **getProducts** répondant aux spécifications suivantes:
+
+- **ENTREE**: aucune.
+- **SORTIE**: un tableau ou une liste d'instances de **Product**, initialisées avec les propriétés des produits associés à la commande via la table intermédiaire **products_in_orders**.
+
+#### Bonus
+
+Essaie de coder les relations d'autres classes sur ce modèle.
+
+#### Super Bonus
+
+Essaie de coder une méthode permettant à chaque classe de se sauvegarder en base de données, et une autre lui permettant de se supprimer.
+
+#### Super Bonus de la mort
+
+Réfléchis à comment on pourrait créer une classe **AbstractModel** dont hériteraient toutes nos classes représentant des entités en base de données. **AbstractModel** contiendrait une fois pour toutes le code nécessaire pour faire les opérations décrites ci-dessus, et il ne serait pas nécessaire de l'écrire individuellement dans chaque classe.
