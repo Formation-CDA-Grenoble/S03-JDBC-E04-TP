@@ -13,7 +13,12 @@ class Order {
             "SELECT * FROM `_order` WHERE `id` = " + id
         );
 
-        resultSet.next();
+        resultSet.last();
+        if (resultSet.getRow() == 0) {
+            throw new RuntimeException("Id " + id + " doesn't exist in table `_order`");
+        }
+
+        resultSet.first();
 
         return new Order(
             resultSet.getInt(1),
@@ -28,5 +33,13 @@ class Order {
         this.reference = reference;
         this.date = date;
         this.status = status;
+    }
+
+    public void inspect() {
+        System.out.println("Order Object");
+        System.out.println("id: " + id);
+        System.out.println("reference: " + reference);
+        System.out.println("date: " + date);
+        System.out.println("status: " + status);
     }
 }
