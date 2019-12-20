@@ -39,18 +39,7 @@ class Order {
     }
 
     public User getUser() throws SQLException {
-        ResultSet resultSet = DBManager.sendQuery(
-            "SELECT * FROM `user` WHERE `id` = " + userId
-        );
-
-        resultSet.first();
-
-        return new User(
-            resultSet.getInt(1),
-            resultSet.getString(2),
-            resultSet.getString(3),
-            resultSet.getString(4)
-        );
+        return User.find(userId);
     }
 
     public void inspect() {
