@@ -1,0 +1,12 @@
+1. id, description, difficulty, points, quiz_id, right_answer_id => 6 colonnes.
+2. En tant qu'utilisateur de l'application, j'ai besoin d'un formulaire afin de créer un questionnaire.
+3. Une question ne peut pas exister sans questionnaire, il s'agit donc d'une relation de composition (losange noir). Si un questionnaire est supprimé, alors toutes les questions associées doivent être supprimées aussi. En revanche, un questionnaire peut exister même si son auteur se désinscrit du site, il s'agit donc d'une relation d'agrégation (losange blanc).
+4. Il peut y avoir entre 0 et n questions dans un questionnaire.
+5. Il peut y avoir enter 1 et 4 réponses à chaque question.
+6. Si je supprime une question, toutes les réponses possibles associées à cette question doivent être supprimées aussi.
+7. Si je supprime un utilisateur, d'une part, tous les résultats obtenus par cet utilisateur à chaque questionnaire doivent être supprimés aussi. D'autre part, tous les questionnaires écrits par cet utilisateur doivent cesser de le référencer (en mettant leur propriété _user_id_ à **NULL**).
+8. Il s'agit d'une relation de type ManyToMany (c'est-à-dire que chaque questionnaire peut avoir plusieurs étiquettes, et que chaque étiquette pour être associée à plusieurs questionnaires), nous sommes donc obligés d'utiliser une table intermédiaire/de pivot.
+9. Une seule clé étrangère: user_id. Toutes les autres clés étrangères appartiennent à des tables différentes.
+10. Il y a deux relations entre questions et réponses, car chaque réponse a besoin d'être associée à une question pour pouvoir exister, mais chaque question a également besoin de référencer laquelle des réponses possibles était la bonne.
+11. La classe QuizResult permet de matérialiser le relation ManyToMany entre les utilisateurs et les questionnaires. A chaque fois qu'un utilisateur va finir un questionnaire, cela va créer un enregistrement dans la table _quiz_result_ qui permet de se rappeler que l'utilisateur a déjà répondu à ce questionnaire, et également d'enregistrer son score à ce questionnaire.
+12. Dans le MCD fourni, il n'est pas prévu  qu'un utilisateur puisse avoir accès à la liste des questions auxquelles il avait bien répondu une fois précédente, car il n'existe pas de lien entre la classe **User** et la classe **Question**. Il faudrait donc rajouter une relation de type ManyToMany, avec une table intermédiaire qui puisse contenir une série d'enregistrements, donc chacun permettra de savoir quel utilisateur à répondu à quelle question, et également si la réponse était bonne ou non.
