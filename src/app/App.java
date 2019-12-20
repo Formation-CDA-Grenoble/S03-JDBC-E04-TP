@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ResultSet addresses = DBManager.sendQuery(
-            "SELECT * FROM `shipping_address` WHERE `user_id` = 3"
+        ResultSet order = DBManager.sendQuery(
+            "SELECT * FROM `_order` ORDER BY `date` DESC LIMIT 1"
         );
 
-        while (addresses.next()) {
+        while (order.next()) {
             System.out.println(
-                "Address #" + addresses.getString(1) +
-                ": " + addresses.getString(2)
+                "Order #" + order.getString(1) +
+                ": " + order.getString(2)
             );
         }
     }
