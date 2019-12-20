@@ -4,13 +4,11 @@ import java.sql.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
-        Product myProduct = Product.find(1);
-        myProduct.inspect();
-
+        Order myOrder = Order.find(1);
+        myOrder.inspect();
         
-        // Order myOrder = Order.find(2);
-        // myOrder.inspect();
-        // myOrder.getUser().inspect();
+        for (Product product: myOrder.getProducts()) {
+            product.inspect();
+        }
     }
 }
