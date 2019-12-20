@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ResultSet products = DBManager.sendQuery(
-            "SELECT * FROM `product` WHERE `brand_id` = 1"
+        ResultSet brands = DBManager.sendQuery(
+            "SELECT * FROM `brand`"
         );
 
-        while (products.next()) {
+        while (brands.next()) {
             System.out.println(
-                "Product #" + products.getString(1) +
-                ": " + products.getString(2)
+                "Brand #" + brands.getString(1) +
+                ": " + brands.getString(2)
             );
         }
     }
