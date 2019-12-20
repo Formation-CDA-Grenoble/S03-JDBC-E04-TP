@@ -7,6 +7,7 @@ class Order {
     public String reference;
     public Date date;
     public int status;
+    public int userId;
 
     static public Order find(int id) throws SQLException {
         ResultSet resultSet = DBManager.sendQuery(
@@ -24,15 +25,32 @@ class Order {
             resultSet.getInt(1),
             resultSet.getString(2),
             resultSet.getDate(3),
-            resultSet.getInt(4)
+            resultSet.getInt(4),
+            resultSet.getInt(5)
         );
     }
 
-    Order(int id, String reference, Date date, int status) {
+    Order(int id, String reference, Date date, int status, int userId) {
         this.id = id;
         this.reference = reference;
         this.date = date;
         this.status = status;
+        this.userId = userId;
+    }
+
+    public User getUser() throws SQLException {
+        ResultSet resultSet = DBManager.sendQuery(
+            "SELECT * FROM `user` WHERE `id` = " + userId
+        );
+
+        resultSet.first();
+
+        return new User(
+            resultSet.getInt(1),
+            resultSet.getString(2),
+            resultSet.getString(3),
+            resultSet.getString(4)
+        );
     }
 
     public void inspect() {
