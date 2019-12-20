@@ -4,15 +4,12 @@ import java.sql.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        ResultSet brands = DBManager.sendQuery(
-            "SELECT * FROM `brand`"
+        ResultSet products = DBManager.sendQuery(
+            "SELECT COUNT(`id`) FROM `product` WHERE `brand_id` = 1"
         );
 
-        while (brands.next()) {
-            System.out.println(
-                "Brand #" + brands.getString(1) +
-                ": " + brands.getString(2)
-            );
+        while (products.next()) {
+            System.out.println(products.getInt(1));
         }
     }
 }
